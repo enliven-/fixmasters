@@ -3,6 +3,7 @@ class CreateAddresses < ActiveRecord::Migration
     create_table :addresses do |t|
       t.integer :address_type
       t.integer :property_type
+      t.integer :entity_id
       t.string 	:line1
       t.string 	:line2
       t.string 	:line3
