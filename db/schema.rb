@@ -80,6 +80,8 @@ ActiveRecord::Schema.define(version: 20150720190448) do
   create_table "service_providers", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
+    t.string   "phone"
+    t.string   "phone_alt"
     t.date     "join_date"
     t.integer  "kyc_profile_id"
     t.integer  "rating_profile_id"

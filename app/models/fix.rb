@@ -37,8 +37,16 @@ class Fix < ActiveRecord::Base
 	# 	:no_sp_available
 	# ]
 
-	has_one 	:customer
+	belongs_to :customer
 	has_many 	:assignments
 	has_many 	:service_providers, through: :assignments
 	has_many 	:appointments
+
+
+	# change and handle via associations
+	def current_sp
+		sp_id = self.assignments.last.service_provider_id
+		ServiceProvider.find(sp_id)
+	end
+
 end

@@ -1,0 +1,16 @@
+
+  <tr>
+    <!-- <th scope="row">1</th> -->
+    <td>
+    	<%= link_to fix.customer.name, fix.customer %> </br>
+    	<%= fix.customer.phone %> <br/>
+    	<%= fix.customer.primary_address.line1 %> <%= fix.customer.primary_address.line2 %> <br/>
+  		near <%= fix.customer.primary_address.line3 %> <br/>
+  		<%= fix.customer.primary_address.line5 %>, <%= fix.customer.primary_address.line6 %>
+    </td>
+    <td></td>
+    <td>
+    	<%= link_to fix.current_sp.name, fix.current_sp %> <br/>
+    	<%= fix.current_sp.phone %>
+    </td>
+  </tr>

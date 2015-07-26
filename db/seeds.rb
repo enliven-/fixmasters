@@ -29,8 +29,8 @@ a1 = Address.create(
 sp1 = ServiceProvider.create(
                               first_name: "Santosh", 
                               last_name:  "Mane",
-                              # phone:      "9156420350",
-                              # phone_alt:  "9988502050",
+                              phone:      "9156420350",
+                              phone_alt:  "9888193362",
                               active:     1,
                               regular:    1,
                               smartphone: 1,

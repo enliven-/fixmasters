@@ -3,6 +3,8 @@ class CreateServiceProviders < ActiveRecord::Migration
     create_table :service_providers do |t|
       t.string 	:first_name
       t.string 	:last_name
+      t.string  :phone
+      t.string  :phone_alt
       t.date 		:join_date
       t.integer :kyc_profile_id
       t.integer :rating_profile_id
