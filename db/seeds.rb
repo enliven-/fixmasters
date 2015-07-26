@@ -72,9 +72,16 @@ spas = SpAreaSet.create(
 fix = Fix.create(
                   customer_id: 1,
                   comment: "needs service by end of day",
-                  history: "...",
-                  field_type_id: 1
+                  field_type_id: 1,
+                  status: nil,
+                  field_type: nil,
+                  flag_reason: nil
                 )
+
+h = History.create(
+                   fix_id: 1,
+                   events: ""
+                   )
 
 as = Assignment.create(
                           service_provider_id: 1,
@@ -87,3 +94,13 @@ ap = Appointment.create(
                           comment: "be there on time",
                           time: Time.now,
                         )
+
+ap2 = Appointment.create(
+                          service_provider_id: 1,
+                          fix_id: 1,
+                          comment: "new",
+                          time: Time.now,
+                        )
+
+
+

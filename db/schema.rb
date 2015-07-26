@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150720190448) do
+ActiveRecord::Schema.define(version: 20150726123054) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "address_type"
@@ -71,10 +71,20 @@ ActiveRecord::Schema.define(version: 20150720190448) do
   create_table "fixes", force: :cascade do |t|
     t.integer  "field_type_id"
     t.text     "comment"
-    t.text     "history"
+    t.integer  "history_id"
     t.integer  "customer_id"
+    t.integer  "status"
+    t.integer  "field_type"
+    t.integer  "flag_reason"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+  end
+
+  create_table "histories", force: :cascade do |t|
+    t.integer  "fix_id"
+    t.text     "events",     default: ""
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "service_providers", force: :cascade do |t|
