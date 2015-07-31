@@ -1,0 +1,20 @@
+<% provide(:title, "All assignments") %>
+<h1>All assignments</h1>
+
+<table class="table .table-striped">
+  <thead>
+    <tr>
+      <th>Customer Details</th>
+      <th>Status</th> 
+      <th>Service Provider</th>
+      <th>History</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= render @assignments %>
+  </tbody>
+
+</table>
+

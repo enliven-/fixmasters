@@ -2,22 +2,31 @@
   <tr>
     <!-- <th scope="row">1</th> -->
     <td>
-    	<%= link_to fix.customer.name, fix.customer %> </br>
-    	<%= fix.customer.phone %> <br/>
-    	<%= fix.customer.primary_address.line1 %> <%= fix.customer.primary_address.line2 %> <br/>
-  		near <%= fix.customer.primary_address.line3 %> <br/>
-  		<%= fix.customer.primary_address.line5 %>, <%= fix.customer.primary_address.line6 %>
+      <%= link_to fix.customer.name, fix.customer %> </br>
+      <%= fix.customer.phone %> <br/>
+      <%= fix.customer.primary_address.line1 %> <%= fix.customer.primary_address.line2 %> <br/>
+      near <%= fix.customer.primary_address.line3 %> <br/>
+      <%= fix.customer.primary_address.line5 %>, <%= fix.customer.primary_address.line6 %>
     </td>
+
     <td>
+      <%= fix.field_type.name %> Job<br/>
       <div class="progress">
         <div class="progress-bar progress-bar-<%= fix.criticality_class %>" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
           3
         </div>
       </div>     
     </td>
+    
     <td>
-    	<%= link_to fix.current_sp.name, fix.current_sp %> <br/>
-    	<%= fix.current_sp.phone %>
+      <%= link_to fix.current_sp.name, fix.current_sp %> <br/>
+      <%= fix.current_sp.phone %> <br/>
+      <%= link_to "Change", new_fix_assignment_path(fix), { :remote => true, 'data-toggle' => "modal", 'data-target' => "#sp-modal" } %>
+    </td>
+
+    <td>
+      <%= fix.current_apt.time.to_formatted_s(:long) %> <br/>
+      <%= link_to "Change", new_fix_appointment_path(fix), { :remote => true, 'data-toggle' => "modal", 'data-target' => "#apt-modal" } %>
     </td>
 
     <td>
@@ -27,3 +36,70 @@
 
     <td><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></td>
   </tr>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="sp-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+
+
+<div class="dropdown">
+    <%= simple_form_for [fix, @assignment] do |f| %>
+      <%= f.collection_select(:service_provider_id, ServiceProvider.all, :id, :name) %>
+      <%= f.submit %>
+    <% end %>
+</div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="apt-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+
+
+<div class="dropdown">
+    <%= simple_form_for [fix, @appointment] do |f| %>
+      <%= f.input :time, as: :datetime, class: 'hidden' %>
+      <%= f.submit %>
+    <% end %>
+</div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<script type="text/javascript">
+$(document).on('ready', function() {
+  // $('#mymodal').modal();
+});
+</script>
+

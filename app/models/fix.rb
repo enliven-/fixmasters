@@ -1,13 +1,13 @@
 class Fix < ActiveRecord::Base
-	enum field_type: {
-		plumbing: 1,
-		electrical: 2,
-		carpenting: 3,
-		painting: 4,
-		pest_control: 5,
-		appliances: 6,
-		other: 7 
-	}
+	# enum types: {
+	# 	plumbing: 1,
+	# 	electrical: 2,
+	# 	carpenting: 3,
+	# 	painting: 4,
+	# 	pest_control: 5,
+	# 	appliances: 6,
+	# 	other: 7 
+	# }
 
 	enum status: {
 		first_sp_assigned: 1,
@@ -37,6 +37,7 @@ class Fix < ActiveRecord::Base
 		no_sp_available: 8
 	}
 
+	belongs_to :field_type
 	belongs_to :customer
 	has_many 	:assignments
 	has_many 	:service_providers, through: :assignments
@@ -56,6 +57,10 @@ class Fix < ActiveRecord::Base
 
 	def current_apt
 		self.appointments.last
+	end
+
+	def current_assignment
+		self.assignments.last
 	end
 
 	def criticality

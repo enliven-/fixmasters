@@ -5,6 +5,8 @@ class FixesController < ApplicationController
   # GET /fixes.json
   def index
     @fixes = Fix.all
+    @assignment = Assignment.new
+    @appointment = Appointment.new
   end
 
   # GET /fixes/1

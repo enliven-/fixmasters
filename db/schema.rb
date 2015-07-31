@@ -74,7 +74,6 @@ ActiveRecord::Schema.define(version: 20150726123054) do
     t.integer  "history_id"
     t.integer  "customer_id"
     t.integer  "status"
-    t.integer  "field_type"
     t.integer  "flag_reason"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
@@ -105,8 +104,9 @@ ActiveRecord::Schema.define(version: 20150726123054) do
 
   create_table "skills", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "field_type_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "sp_area_sets", force: :cascade do |t|
